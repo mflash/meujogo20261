@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bs57d7cd2a2tw"]
+
+[ext_resource type="Script" uid="uid://tgm0mx0hugji" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="FontFile" uid="uid://xa6wut7ie6bp" path="res://Xolonium-Regular.ttf" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=130686207]
+script = ExtResource("1_0xm2m")
+
+[node name="Score" type="Label" parent="." unique_id=1417576992]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 60
+text = "Score: 10"
