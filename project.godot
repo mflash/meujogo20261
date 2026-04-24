@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="MeuJogo"
+run/main_scene="uid://c6q2pf6s8aa3e"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 

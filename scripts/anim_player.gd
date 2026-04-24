@@ -4,7 +4,11 @@ extends CharacterBody2D
 @export var jump_speed := -1000.0
 @export var gravity := 2500.0
 
-@onready var sprite = $PlayerSprite
+@onready var sprite := $PlayerSprite
+#@onready var box := preload("res://objects/box.tscn")
+@export var box : PackedScene
+
+signal jumped
 
 #func _ready() -> void:
 #	sprite = $PlayerSprite
@@ -49,14 +53,23 @@ func get_side_input():
 
 	if is_on_floor() and jump:
 		velocity.y = jump_speed
+		jumped.emit()
+		get_tree().call_group("hud", "mudaScore")
+		var b := box.instantiate()
+		b.position = global_position
+		owner.add_child(b)
 	velocity.x = vel * speed
 
 func move_side(delta):
 	velocity.y += gravity * delta
-	print(velocity) 
+	#print(velocity) 
 	get_side_input()
-	animate_side()
+	animate_side()	
 	move_and_slide()
+	#for i in get_slide_collision_count():
+	#	var collision = get_slide_collision(i)
+	#	print("Collided with: ", collision.get_collider().name)
+
 	
 func _physics_process(delta):
 	#move_8way(delta)

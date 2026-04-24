@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bs57d7cd2a2tw"]
 
-[ext_resource type="Script" uid="uid://tgm0mx0hugji" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://tgm0mx0hugji" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="FontFile" uid="uid://xa6wut7ie6bp" path="res://Xolonium-Regular.ttf" id="1_ig7tw"]
 
 [node name="Main" type="Node2D" unique_id=130686207]
