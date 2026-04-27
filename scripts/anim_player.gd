@@ -73,4 +73,4 @@ func move_side(delta):
 	
 func _physics_process(delta):
 	#move_8way(delta)
-	move_side(delta)
+	move_side(delta)	

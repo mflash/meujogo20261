@@ -1,16 +1,90 @@
 [gd_scene format=3 uid="uid://jqvm3yh460ax"]
 
+[ext_resource type="Script" uid="uid://bskl71sxptkgm" path="res://objects/box.gd" id="1_bctmu"]
 [ext_resource type="Texture2D" uid="uid://ld06pw2njp0r" path="res://icon.svg" id="1_g2tbl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oq5cr"]
 size = Vector2(128, 128)
 
+[sub_resource type="Animation" id="Animation_bctmu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d7q48"]
+resource_name = "scale"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10rvk"]
+_data = {
+&"RESET": SubResource("Animation_bctmu"),
+&"scale": SubResource("Animation_d7q48")
+}
+
 [node name="Box" type="Area2D" unique_id=1494482756]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_bctmu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=343452188]
+modulate = Color(1, 0, 0, 1)
 texture = ExtResource("1_g2tbl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1574044009]
 visible = false
 shape = SubResource("RectangleShape2D_oq5cr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=304078914]
+visible = false
+position = Vector2(0, -2)
+rect = Rect2(-56, -58, 112, 120)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=124893427]
+libraries/ = SubResource("AnimationLibrary_10rvk")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
