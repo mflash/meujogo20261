@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://biio8u4makcak"]
+
+[ext_resource type="Texture2D" uid="uid://cx1k2fsqsg8s1" path="res://bricks/Stonewall_Texture.png" id="1_ru4tf"]
+[ext_resource type="Texture2D" uid="uid://bswa42qlqa4rl" path="res://grass/grass3.png" id="2_6sh32"]
+[ext_resource type="Texture2D" uid="uid://ccfn3bqc1n8st" path="res://ball2.png" id="3_ejswk"]
+[ext_resource type="PackedScene" uid="uid://dny70bfywb4ns" path="res://scenes/anim_player.tscn" id="4_bbk5w"]
+[ext_resource type="PackedScene" uid="uid://jqvm3yh460ax" path="res://objects/box.tscn" id="5_conm7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bm6p"]
+size = Vector2(256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dugkq"]
+size = Vector2(211, 43)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dugkq"]
+bounce = 0.62
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pltu"]
+radius = 29.068884
+
+[node name="Level" type="Node2D" unique_id=1754840906]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1987575940]
+position = Vector2(1045, 65)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1241518666]
+texture = ExtResource("1_ru4tf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1516262607]
+shape = SubResource("RectangleShape2D_6bm6p")
+
+[node name="Grass" type="StaticBody2D" parent="." unique_id=281204700]
+position = Vector2(302, 498)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Grass3" type="Sprite2D" parent="Grass" unique_id=126131254]
+texture = ExtResource("2_6sh32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass" unique_id=82503953]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_dugkq")
+
+[node name="Grass2" type="StaticBody2D" parent="." unique_id=1499896579]
+position = Vector2(917, 366)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Grass3" type="Sprite2D" parent="Grass2" unique_id=1032724203]
+texture = ExtResource("2_6sh32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass2" unique_id=2027469764]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_dugkq")
+
+[node name="Grass4" type="StaticBody2D" parent="." unique_id=1784773998]
+position = Vector2(614, 428)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Grass3" type="Sprite2D" parent="Grass4" unique_id=2099347349]
+texture = ExtResource("2_6sh32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass4" unique_id=1058053623]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_dugkq")
+
+[node name="Grass3" type="StaticBody2D" parent="." unique_id=951915978]
+position = Vector2(338, 295)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Grass3" type="Sprite2D" parent="Grass3" unique_id=447914417]
+texture = ExtResource("2_6sh32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass3" unique_id=1916075687]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_dugkq")
+
+[node name="Grass5" type="StaticBody2D" parent="." unique_id=583515689]
+position = Vector2(30, 294)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="Grass3" type="Sprite2D" parent="Grass5" unique_id=1932269697]
+texture = ExtResource("2_6sh32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass5" unique_id=1779561497]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_dugkq")
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=1984956065]
+position = Vector2(448, -41)
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_dugkq")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=505238204]
+texture = ExtResource("3_ejswk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=775930350]
+shape = SubResource("CircleShape2D_2pltu")
+
+[node name="AnimPlayer" parent="." unique_id=261926566 instance=ExtResource("4_bbk5w")]
+position = Vector2(588, 322)
+box = ExtResource("5_conm7")
+
+[node name="Camera2D" type="Camera2D" parent="AnimPlayer" unique_id=1252934733]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.59
+editor_draw_drag_margin = true
+
+[node name="SceneLimit" type="Marker2D" parent="." unique_id=762088112]
+position = Vector2(764, 655)
+gizmo_extents = 49.4
+
+[editable path="AnimPlayer"]

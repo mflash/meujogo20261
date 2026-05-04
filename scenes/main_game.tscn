@@ -3,10 +3,18 @@
 [ext_resource type="Script" uid="uid://d3ltxqpqswg5l" path="res://scripts/main_game.gd" id="1_2pltu"]
 [ext_resource type="PackedScene" uid="uid://biio8u4makcak" path="res://scenes/level1.tscn" id="4_0rdsr"]
 [ext_resource type="FontFile" uid="uid://xa6wut7ie6bp" path="res://Xolonium-Regular.ttf" id="5_2pltu"]
+[ext_resource type="AudioStream" uid="uid://cg7ho2c2rt1i5" path="res://SFX/Summer_Park.ogg" id="5_ipu61"]
 [ext_resource type="Script" uid="uid://hiqb7o36euxc" path="res://scripts/hud.gd" id="6_f52ns"]
 
 [node name="MainGame" type="Node2D" unique_id=1443762209]
 script = ExtResource("1_2pltu")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=513724834]
+position = Vector2(1311, 328)
+stream = ExtResource("5_ipu61")
+autoplay = true
+max_distance = 1454.0
+bus = &"Music"
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1421205675 groups=["hud"]]
 script = ExtResource("6_f52ns")

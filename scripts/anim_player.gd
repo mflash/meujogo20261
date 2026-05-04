@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var gravity := 2500.0
 
 @onready var sprite := $PlayerSprite
+@onready var jumpSound := $JumpSound
 #@onready var box := preload("res://objects/box.tscn")
 @export var box : PackedScene
 
@@ -50,6 +51,15 @@ func get_side_input():
 	velocity.x = 0
 	var vel := Input.get_axis("left", "right") # -1, 0 ou 1 (teclado)
 	var jump := Input.is_action_just_pressed('ui_select')
+	
+	if Input.is_action_just_pressed("filter"): # tecla "F"
+		var audioEffect : AudioEffectLowPassFilter = AudioServer.get_bus_effect(1, 0) # Music: 1, efeito: 0
+		if audioEffect.cutoff_hz == 20500:
+			# "Liga" o efeito
+			audioEffect.cutoff_hz = 500			
+		else:
+			# "Desligando" o efeito
+			audioEffect.cutoff_hz = 20500
 
 	if is_on_floor() and jump:
 		velocity.y = jump_speed
@@ -58,6 +68,9 @@ func get_side_input():
 		var b := box.instantiate()
 		b.position = global_position
 		owner.add_child(b)
+		# Toca o áudio do pulo
+		if not jumpSound.playing:
+			jumpSound.play()			
 	velocity.x = vel * speed
 
 func move_side(delta):

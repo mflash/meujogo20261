@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b76gav2wcbaxc"]
+
+[ext_resource type="FontFile" uid="uid://xa6wut7ie6bp" path="res://Xolonium-Regular.ttf" id="1_y26ei"]
+
+[node name="GameOver" type="Control" unique_id=418755821]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=832301082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.032922722, 0.10402439, 0.28762746, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=729654716]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=863041829]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1201211974]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y26ei")
+theme_override_font_sizes/font_size = 140
+text = "Game Over"
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1583097916]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y26ei")
+theme_override_font_sizes/font_size = 60
+text = "Try Again!"
+horizontal_alignment = 1
