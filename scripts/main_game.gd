@@ -13,8 +13,7 @@ func  _ready() -> void:
 	# Assumindo que o level é SEMPRE o último
 	# nodo da cena!
 	var level = get_child(qtd_filhos-1)
-	player = level.get_node("AnimPlayer")
-	scene_limit = level.get_node("SceneLimit")
+	setup_scene(level)
 	print(player)
 	print(scene_limit)
 	
@@ -23,12 +22,19 @@ func _on_anim_player_jumped() -> void:
 	score += 1	
 	hud.setScore(score)	
 
+func setup_scene(level) -> void:
+	scene_limit = level.get_node("SceneLimit")
+	player = level.get_node("AnimPlayer")
+	# Conecta manualmente o signal do player à função _on_anim_player_jumped
+	# (e incrementa o score ao saltar)
+	player.jumped.connect(_on_anim_player_jumped)
+	# alternativa:
+	#player.connect("jumped", _on_anim_player_jumped)
+	
 func _physics_process(delta: float) -> void:		
 		
 	if scene_limit == null:
-		scene_limit = current_scene.get_node("SceneLimit")
-		player = current_scene.get_node("AnimPlayer")
-		
+		setup_scene(current_scene)	
 		#print(player.position.y, " ", scene_limit.position.y)
 	
 	if scene_limit != null:
